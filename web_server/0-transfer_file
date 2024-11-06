@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-<<<<<<< HEAD
-#Transfer a File to your server
+# This script transfers a file to a remote server using SCP
 
 if [ $# -lt 4 ]
 then
