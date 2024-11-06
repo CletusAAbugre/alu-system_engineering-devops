@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# This script installs Nginx and configures it on an Ubuntu server.
+
+# Update the package list
+sudo apt update
+
+# Install Nginx with the -y flag to automatically answer yes to prompts
+sudo apt-get install -y nginx
+
+# Make sure Nginx is running
+sudo service nginx start
+
+# Create a basic HTML file to test the server
+echo "Holberton School for the win!" | sudo tee /var/www/html/index.html
+
+# Make sure Nginx is listening on port 80
+sudo ufw allow 'Nginx HTTP'
+
+# Confirm Nginx is serving the correct page
+curl -s http://localhost | grep "Holberton School" > /dev/null
+
+# Check the result of the curl command
+if [ $? -eq 0 ]; then
+  echo "Nginx is configured correctly and serving the expected page."
+else
+  echo "Error: Nginx is not serving the correct page."
+fi
